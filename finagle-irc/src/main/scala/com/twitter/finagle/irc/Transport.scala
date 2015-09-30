@@ -43,6 +43,7 @@ case class Transport(
   def localAddress = trans.localAddress
   def remoteAddress = trans.remoteAddress
   def close(deadline: Time) = trans.close(deadline)
+  def peerCertificate: Option[java.security.cert.Certificate] = None
 
   private[this] def decode(cmdStr: String): Message = {
     // TODO: println

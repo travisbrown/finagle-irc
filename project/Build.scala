@@ -2,12 +2,12 @@ import sbt._
 import Keys._
 
 object FinagleIrc extends Build {
-  val libVersion = "6.24.0"
+  val libVersion = "6.29.0"
 
   val baseSettings = Defaults.defaultSettings ++ Seq(
     libraryDependencies ++= Seq(
       "com.twitter" %% "finagle-core" % libVersion,
-      "org.scalatest" %% "scalatest" % "2.2.2" % "test",
+      "org.scalatest" %% "scalatest" % "2.2.5" % "test",
       "junit" % "junit" % "4.12" % "test"
     )
   )
@@ -15,8 +15,8 @@ object FinagleIrc extends Build {
   lazy val buildSettings = Seq(
     organization := "com.github.finagle",
     version := libVersion,
-    scalaVersion := "2.10.4",
-    crossScalaVersions := Seq("2.10.4", "2.11.4"),
+    scalaVersion := "2.10.5",
+    crossScalaVersions := Seq("2.10.5", "2.11.7"),
     scalacOptions ++= Seq("-deprecation", "-feature", "-language:postfixOps")
   )
 
@@ -64,9 +64,9 @@ object FinagleIrc extends Build {
 
   lazy val finagleIrcServer =
     finProject("irc-server").settings(
-      resolvers += "twttr" at "http://maven.twttr.com/",
+      resolvers += "twttr" at "https://maven.twttr.com/",
       libraryDependencies ++= Seq(
-        "com.twitter" %% "twitter-server" % "1.9.0")
+        "com.twitter" %% "twitter-server" % "1.14.0")
     ).dependsOn(finagleIrc)
 }
 

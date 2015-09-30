@@ -38,6 +38,9 @@ with Server[IrcHandle, Offer[Message]] {
   def newClient(name: Name, label: String): ServiceFactory[Offer[Message], IrcHandle] =
     IrcClient.newClient(name, label)
 
+  def newService(name: Name, label: String): Service[Offer[Message], IrcHandle] =
+    IrcClient.newService(name, label)
+
   def serve(addr: SocketAddress, service: ServiceFactory[IrcHandle, Offer[Message]]): ListeningServer =
     IrcServer.serve(addr, service)
 }
